@@ -9,7 +9,7 @@
 
     <string name="hello_first_fragment">Hello first fragment</string>
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
-    <string name="textview">Trip Advisor</string>
+    <string name="textview">Meu Caminho:</string>
     <string name="todo">TODO</string>
     <string name="title_activity_maps">Map</string>
     <string name="title_activity_tela_lugar">TelaLugar</string>
