@@ -12,4 +12,5 @@
     <string name="textview">Trip Advisor</string>
     <string name="todo">TODO</string>
     <string name="title_activity_maps">Map</string>
+    <string name="title_activity_tela_lugar">TelaLugar</string>
 </resources>

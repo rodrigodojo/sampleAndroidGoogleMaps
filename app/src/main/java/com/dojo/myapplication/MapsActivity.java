@@ -82,7 +82,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             locationManager.removeUpdates(this);
 
             mMap.addMarker(new MarkerOptions().position(MainActivity.localizacoes.get(localizacao)).title(MainActivity.lugares.get(localizacao)));
-            mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(MainActivity.localizacoes.get(localizacao), 10));
+            mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(MainActivity.localizacoes.get(localizacao), 25));
         } else {
             if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
                 // TODO: Consider calling
@@ -96,6 +96,16 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             }
             locationManager.requestLocationUpdates(provider, 400, 1, this);
         }
+
+        mMap.setOnInfoWindowClickListener(new GoogleMap.OnInfoWindowClickListener() {
+            @Override
+            public void onInfoWindowClick(Marker marker) {
+                Intent intent = new Intent(MapsActivity.this,TelaLugar.class);
+
+                intent.putExtra("nomeLugar", marker.getTitle());
+                startActivity(intent);
+            }
+        });
     }
 
     @Override
