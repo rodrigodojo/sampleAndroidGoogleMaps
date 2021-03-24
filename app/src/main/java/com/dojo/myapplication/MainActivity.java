@@ -15,6 +15,8 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
+import com.google.android.gms.maps.model.LatLng;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -22,6 +24,7 @@ public class MainActivity extends AppCompatActivity {
 
     static ArrayList<String> lugares;
     static ArrayAdapter arrayAdapter;
+    static ArrayList<LatLng> localizacoes;
     String[] permissoes = new String[]{
             Manifest.permission.ACCESS_FINE_LOCATION,
             Manifest.permission.ACCESS_COARSE_LOCATION,
@@ -38,6 +41,8 @@ public class MainActivity extends AppCompatActivity {
         ListView listView = findViewById(R.id.listView);
         lugares = new ArrayList<>();
         lugares.add("Selecione seu local favorito");
+        localizacoes = new ArrayList<>();
+        localizacoes.add(new LatLng(0, 0));
         arrayAdapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1,lugares);
         listView.setAdapter(arrayAdapter);
 
@@ -45,6 +50,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent intent = new Intent(getApplicationContext(),MapsActivity.class);
+                intent.putExtra("infoLocalizacao",position);
                 startActivity(intent);
             }
         });
